@@ -1,57 +1,52 @@
 const maxHeap = require('./maxHeap')
-const MinHeap = require('./minHeapClass')
+const { size, addValue, isEmpty } = require('./commonFunctions')
 
-class MaxHeap extends MinHeap {
-  constructor (initialArray) {
-    super(initialArray)
-    this.maxHeapArray = initialArray.length > 1 ? maxHeap(initialArray) : initialArray
+function MaxHeap (initialArray) {
+  let maxHeapArray = initialArray ? initialArray.length > 1 ? maxHeap(initialArray) : initialArray : []
+
+  this.size = () => size(maxHeapArray)
+  this.isEmpty = () => isEmpty(maxHeapArray)
+
+  this.addValue = (value) => {
+    addValue(maxHeapArray, value)
+    maxHeapArray = maxHeap(maxHeapArray)
   }
 
-  static buildMaxHeap (arrayOfValues) {
-    return maxHeap(arrayOfValues)
+  this.currentHeapArray = () => {
+    return maxHeapArray
   }
 
-  buildMaxHeap () {
-    this.maxHeapArray = maxHeap(this.maxHeapArray)
-    return this.maxHeapArray
+  this.getMax = () => {
+    return maxHeapArray[0]
   }
 
-  currentMaxHeapArray () {
-    return this.maxHeapArray
-  }
-
-  getMax () {
-    return this.maxHeapArray[0]
-  }
-
-  extractMax () {
-    let maxValue = this.maxHeapArray[0]
-    this.maxHeapArray.splice(0, 1)
-    this.maxHeapArray = maxHeap(this.maxHeapArray)
+  this.extract = () => {
+    let maxValue = maxHeapArray[0]
+    maxHeapArray.splice(0, 1)
+    maxHeapArray = maxHeap(maxHeapArray)
     return maxValue
   }
 
-  deleteMax () {
-    this.maxHeapArray.splice(0, 1)
-    this.maxHeapArray = maxHeap(this.maxHeapArray)
-    return this.maxHeapArray
+  this.delete = () => {
+    maxHeapArray.splice(0, 1)
+    maxHeapArray = maxHeap(maxHeapArray)
+    return maxHeapArray
   }
 
-  replaceMaxHeap (value) {
-    this.maxHeapArray.splice(0, 1)
-    this.maxHeapArray.push(value)
-    this.maxHeapArray = maxHeap(this.maxHeapArray)
-    return this.maxHeapArray
+  this.replace = value => {
+    maxHeapArray.splice(0, 1)
+    maxHeapArray.push(value)
+    maxHeapArray = maxHeap(maxHeapArray)
+    return maxHeapArray
   }
 
-  mergeMaxHeap (arrayToMerge) {
-    return maxHeap([...arrayToMerge, ...this.maxHeapArray])
+  this.merge = arrayToMerge => {
+    return maxHeap([...arrayToMerge, ...maxHeapArray])
   }
 
-  meldMaxHeap (arrayToMerge) {
-    this.maxHeapArray = maxHeap([...arrayToMerge, ...this.maxHeapArray])
-    return this.maxHeapArray
+  this.meld = arrayToMerge => {
+    maxHeapArray = maxHeap([...arrayToMerge, ...maxHeapArray])
+    return maxHeapArray
   }
 }
-
 module.exports = MaxHeap

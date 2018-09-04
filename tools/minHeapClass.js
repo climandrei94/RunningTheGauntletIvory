@@ -1,54 +1,52 @@
 const minHeap = require('./minHeap')
+const { size, addValue, isEmpty } = require('./commonFunctions')
 
-class MinHeap {
-  constructor (initialArray) {
-    this.minHeapArray = initialArray.length > 1 ? minHeap(initialArray) : initialArray
+function MinHeap (initialArray) {
+  let minHeapArray = initialArray ? initialArray.length > 1 ? minHeap(initialArray) : initialArray : []
+
+  this.size = () => size(minHeapArray)
+  this.isEmpty = () => isEmpty(minHeapArray)
+
+  this.addValue = (value) => {
+    addValue(minHeapArray, value)
+    minHeapArray = minHeap(minHeapArray)
   }
 
-  static buildMinHeap (arrayOfValues) {
-    return minHeap(arrayOfValues)
+  this.currentHeapArray = () => {
+    return minHeapArray
   }
 
-  buildMinHeap () {
-    this.minHeapArray = minHeap(this.minHeapArray)
-    return this.minHeapArray
+  this.getMin = () => {
+    return minHeapArray[0]
   }
 
-  currentMinHeapArray () {
-    return this.minHeapArray
-  }
-
-  getMin () {
-    return this.minHeapArray[0]
-  }
-
-  extractMin () {
-    let minValue = this.minHeapArray[0]
-    this.minHeapArray.splice(0, 1)
-    this.minHeapArray = minHeap(this.minHeapArray)
+  this.extract = () => {
+    let minValue = minHeapArray[0]
+    minHeapArray.splice(0, 1)
+    minHeapArray = minHeap(minHeapArray)
     return minValue
   }
 
-  deleteMin () {
-    this.minHeapArray.splice(0, 1)
-    this.minHeapArray = minHeap(this.minHeapArray)
-    return this.minHeapArray
+  this.delete = () => {
+    minHeapArray.splice(0, 1)
+    minHeapArray = minHeap(minHeapArray)
+    return minHeapArray
   }
 
-  replaceMinHeap (value) {
-    this.minHeapArray.splice(0, 1)
-    this.minHeapArray.push(value)
-    this.minHeapArray = minHeap(this.minHeapArray)
-    return this.minHeapArray
+  this.replace = value => {
+    minHeapArray.splice(0, 1)
+    minHeapArray.push(value)
+    minHeapArray = minHeap(minHeapArray)
+    return minHeapArray
   }
 
-  mergeMinHeap (arrayToMerge) {
-    return minHeap([...arrayToMerge, ...this.minHeapArray])
+  this.merge = arrayToMerge => {
+    return minHeap([...arrayToMerge, ...minHeapArray])
   }
 
-  meldMaxHeap (arrayToMerge) {
-    this.minHeapArray = minHeap([...arrayToMerge, ...this.minHeapArray])
-    return this.minHeapArray
+  this.meld = arrayToMerge => {
+    minHeapArray = minHeap([...arrayToMerge, ...minHeapArray])
+    return minHeapArray
   }
 }
 
