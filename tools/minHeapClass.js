@@ -1,15 +1,15 @@
-const minHeap = require('./minHeap')
+const minHeapSort = require('../sort/minHeapSort')
 const { size, addValue, isEmpty } = require('./commonFunctions')
 
 function MinHeap (initialArray) {
-  let minHeapArray = initialArray ? initialArray.length > 1 ? minHeap(initialArray) : initialArray : []
+  let minHeapArray = initialArray ? initialArray.length > 1 ? [...minHeapSort(initialArray)] : initialArray : []
 
   this.size = () => size(minHeapArray)
   this.isEmpty = () => isEmpty(minHeapArray)
 
   this.addValue = (value) => {
     addValue(minHeapArray, value)
-    minHeapArray = minHeap(minHeapArray)
+    minHeapArray = minHeapSort(minHeapArray)
   }
 
   this.currentHeapArray = () => {
@@ -23,29 +23,29 @@ function MinHeap (initialArray) {
   this.extract = () => {
     let minValue = minHeapArray[0]
     minHeapArray.splice(0, 1)
-    minHeapArray = minHeap(minHeapArray)
+    minHeapArray = minHeapSort(minHeapArray)
     return minValue
   }
 
   this.delete = () => {
     minHeapArray.splice(0, 1)
-    minHeapArray = minHeap(minHeapArray)
+    minHeapArray = minHeapSort(minHeapArray)
     return minHeapArray
   }
 
   this.replace = value => {
     minHeapArray.splice(0, 1)
     minHeapArray.push(value)
-    minHeapArray = minHeap(minHeapArray)
+    minHeapArray = minHeapSort(minHeapArray)
     return minHeapArray
   }
 
   this.merge = arrayToMerge => {
-    return minHeap([...arrayToMerge, ...minHeapArray])
+    return minHeapSort([...arrayToMerge, ...minHeapArray])
   }
 
   this.meld = arrayToMerge => {
-    minHeapArray = minHeap([...arrayToMerge, ...minHeapArray])
+    minHeapArray = minHeapSort([...arrayToMerge, ...minHeapArray])
     return minHeapArray
   }
 }

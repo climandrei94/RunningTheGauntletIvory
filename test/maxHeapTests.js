@@ -4,8 +4,8 @@ const Heap = require('../index')
 describe('Max Heap tests', function () {
   describe('#buildMaxHeap', function () {
     it('should bulild correnctly for a corect heap data structure', function () {
-      let heapDataStructure = new Heap([35, 33])
-      let heapDataStructureToCompare = [35, 33]
+      let heapDataStructure = new Heap([35, 33, 31])
+      let heapDataStructureToCompare = [35, 33, 31]
       assert.deepStrictEqual(heapDataStructure.maxHeap.currentHeapArray(), heapDataStructureToCompare)
     })
     it('should bulild correnctly for a wrong heap data structure', function () {
