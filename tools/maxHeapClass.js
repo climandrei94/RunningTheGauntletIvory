@@ -1,5 +1,5 @@
 const maxHeapSort = require('../sort/maxHeapSort')
-const { size, addValue, isEmpty } = require('./commonFunctions')
+const { size, addValue, isEmpty, swap } = require('./commonFunctions')
 
 function MaxHeap (initialArray1) {
   let maxHeapArray = initialArray1 ? initialArray1.length > 1 ? [...maxHeapSort(initialArray1)] : initialArray1 : []
@@ -22,20 +22,22 @@ function MaxHeap (initialArray1) {
   }
 
   this.extract = () => {
-    let maxValue = maxHeapArray[0]
-    maxHeapArray.splice(0, 1)
+    swap(maxHeapArray, 0, maxHeapArray.length - 1)
+    let maxValue = maxHeapArray.pop()
     maxHeapArray = maxHeapSort(maxHeapArray)
     return maxValue
   }
 
   this.delete = () => {
-    maxHeapArray.splice(0, 1)
+    swap(maxHeapArray, 0, maxHeapArray.length - 1)
+    maxHeapArray.pop()
     maxHeapArray = maxHeapSort(maxHeapArray)
     return maxHeapArray
   }
 
   this.replace = value => {
-    maxHeapArray.splice(0, 1)
+    swap(maxHeapArray, 0, maxHeapArray.length - 1)
+    maxHeapArray.pop()
     maxHeapArray.push(value)
     maxHeapArray = maxHeapSort(maxHeapArray)
     return maxHeapArray
@@ -46,7 +48,7 @@ function MaxHeap (initialArray1) {
   }
 
   this.meld = arrayToMerge => {
-    maxHeapArray = maxHeapSort([...arrayToMerge, ...maxHeapArray])
+    maxHeapArray = [...maxHeapSort([...arrayToMerge, ...maxHeapArray])]
     return maxHeapArray
   }
 }

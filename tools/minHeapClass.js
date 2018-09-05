@@ -1,5 +1,5 @@
 const minHeapSort = require('../sort/minHeapSort')
-const { size, addValue, isEmpty } = require('./commonFunctions')
+const { size, addValue, isEmpty, swap } = require('./commonFunctions')
 
 function MinHeap (initialArray) {
   let minHeapArray = initialArray ? initialArray.length > 1 ? [...minHeapSort(initialArray)] : initialArray : []
@@ -21,20 +21,22 @@ function MinHeap (initialArray) {
   }
 
   this.extract = () => {
-    let minValue = minHeapArray[0]
-    minHeapArray.splice(0, 1)
+    swap(minHeapArray, 0, minHeapArray.length - 1)
+    let minValue = minHeapArray.pop()
     minHeapArray = minHeapSort(minHeapArray)
     return minValue
   }
 
   this.delete = () => {
-    minHeapArray.splice(0, 1)
+    swap(minHeapArray, 0, minHeapArray.length - 1)
+    minHeapArray.pop()
     minHeapArray = minHeapSort(minHeapArray)
     return minHeapArray
   }
 
   this.replace = value => {
-    minHeapArray.splice(0, 1)
+    swap(minHeapArray, 0, minHeapArray.length - 1)
+    minHeapArray.pop()
     minHeapArray.push(value)
     minHeapArray = minHeapSort(minHeapArray)
     return minHeapArray
