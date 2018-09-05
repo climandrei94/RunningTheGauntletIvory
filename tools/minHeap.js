@@ -1,16 +1,5 @@
-const minHeap = arrayOfValues => {
-  var newArray = []
-
-  for (let i = 0; i <= arrayOfValues.length - 1; i++) {
-    insert(newArray, arrayOfValues[i])
-  }
-  newArray.splice(0, 1)
-  return newArray
-}
-
-function insert (array, valueToInsert) {
+function addMinHeap (array, valueToInsert) {
   if (array.length <= 0) {
-    array.push(null)
     array.push(valueToInsert)
   } else {
     array.push(valueToInsert)
@@ -18,14 +7,14 @@ function insert (array, valueToInsert) {
   }
 }
 
-function heapProperty (array, indexOfItemToCheck) {
-  const indexOfItemToCompare = Math.floor(indexOfItemToCheck / 2)
-  if (array[indexOfItemToCheck] < array[indexOfItemToCompare] && indexOfItemToCheck !== 1) {
-    switchValues(indexOfItemToCheck, indexOfItemToCompare, array)
-    heapProperty(array, indexOfItemToCompare)
-    return null
+function heapProperty (array, indexOfLastItemIntroduced) {
+  if (indexOfLastItemIntroduced > 0) {
+    let parrent = Math.floor((indexOfLastItemIntroduced - 1) / 2)
+    if (array[parrent] > array[indexOfLastItemIntroduced]) {
+      switchValues(indexOfLastItemIntroduced, parrent, array)
+      heapProperty(array, parrent)
+    }
   }
-  return null
 }
 
 function switchValues (index1, index2, array) {
@@ -34,4 +23,4 @@ function switchValues (index1, index2, array) {
   array[index2] = aux
 }
 
-module.exports = minHeap
+module.exports = addMinHeap

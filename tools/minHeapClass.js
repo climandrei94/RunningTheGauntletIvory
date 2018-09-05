@@ -1,5 +1,6 @@
+const addMinHeap = require('../tools/minHeap')
 const minHeapSort = require('../sort/minHeapSort')
-const { size, addValue, isEmpty, swap } = require('./commonFunctions')
+const { size, isEmpty, swap } = require('./commonFunctions')
 
 function MinHeap (initialArray) {
   let minHeapArray = initialArray ? initialArray.length > 1 ? [...minHeapSort(initialArray)] : initialArray : []
@@ -8,8 +9,7 @@ function MinHeap (initialArray) {
   this.isEmpty = () => isEmpty(minHeapArray)
 
   this.addValue = (value) => {
-    addValue(minHeapArray, value)
-    minHeapArray = minHeapSort(minHeapArray)
+    addMinHeap(minHeapArray, value)
   }
 
   this.currentHeapArray = () => {

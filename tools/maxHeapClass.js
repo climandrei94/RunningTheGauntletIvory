@@ -1,5 +1,6 @@
+const addMaxHeap = require('../tools/maxHeap')
 const maxHeapSort = require('../sort/maxHeapSort')
-const { size, addValue, isEmpty, swap } = require('./commonFunctions')
+const { size, isEmpty, swap } = require('./commonFunctions')
 
 function MaxHeap (initialArray1) {
   let maxHeapArray = initialArray1 ? initialArray1.length > 1 ? [...maxHeapSort(initialArray1)] : initialArray1 : []
@@ -9,8 +10,7 @@ function MaxHeap (initialArray1) {
   this.isEmpty = () => isEmpty(maxHeapArray)
 
   this.addValue = (value) => {
-    addValue(maxHeapArray, value)
-    maxHeapArray = maxHeapSort(maxHeapArray)
+    addMaxHeap(maxHeapArray, value)
   }
 
   this.currentHeapArray = () => {

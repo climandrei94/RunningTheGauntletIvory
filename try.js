@@ -1,6 +1,15 @@
 const Heap = require('./index')
 
-let a = new Heap([35, 33])
-console.log(a.maxHeap.getMax())
-console.log(a.maxHeap.extract())
+let a = new Heap()
+a.maxHeap.addValue(2)
+a.maxHeap.addValue(8)
+a.maxHeap.addValue(5)
+a.maxHeap.addValue(3)
+a.maxHeap.addValue(9)
+a.maxHeap.addValue(7)
+// a.maxHeap.addValue(10)
 console.log(a.maxHeap.currentHeapArray())
+
+console.log('b')
+let b = new Heap([2, 8, 5, 3, 9, 7])
+console.log(b.maxHeap.currentHeapArray())
