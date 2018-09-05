@@ -3,7 +3,6 @@ const heapSort = (arrayOfValues) => {
   for (let i = Math.floor((len - 1) / 2); i >= 0; i--) {
     heapify(arrayOfValues, len, i)
   }
-  console.log('sort', arrayOfValues)
   return arrayOfValues
 }
 
