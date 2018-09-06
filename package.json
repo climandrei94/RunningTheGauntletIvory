@@ -1,0 +1,22 @@
+{
+  "name": "runningthegauntletivory",
+  "version": "1.0.0",
+  "description": "",
+  "main": "smelly.js",
+  "scripts": {
+    "test": "mocha smellyTest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/climandrei94/RunningTheGauntletIvory.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/climandrei94/RunningTheGauntletIvory/issues"
+  },
+  "homepage": "https://github.com/climandrei94/RunningTheGauntletIvory#readme",
+  "dependencies": {
+    "mocha": "^5.2.0"
+  }
+}
