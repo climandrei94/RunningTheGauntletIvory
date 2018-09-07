@@ -41,6 +41,14 @@
     ```javascript
       let ttal = labelProbabilities
     ```
+  * Use only one writing style, in this case I prefer to use camel case because thi was used on entire document
+    ```javascript
+      somewhere_over_the_rainbow
+    ```
+    To
+    ```javascript
+    somewhereOverTheRainbow
+    ```
 
 # Nonsens code
   * multiply with 1
@@ -69,6 +77,14 @@
     ```javascript
       let numberOfSongs = getNumberOfSongs()
     ```
+
+# Why I put all functions in one that behave almost like a classic class
+*   **Public methods & Private Data**
+*   **Provides modularity**
+*   **Easy reusability**
+*   **Eassy to use**
+*   **Easy to import**
+
 # I like to to respect some rulles when i write code :
   * No comma
   * No unnecessary spaces
