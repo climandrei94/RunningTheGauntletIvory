@@ -1,7 +1,7 @@
 import Constants from '../constants/constants'
 
 const initState = {
-  isLogedIn : false
+  isLogedIn: false
 }
 
 const reducer = (state = initState, action) => {
