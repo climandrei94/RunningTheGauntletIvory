@@ -16,10 +16,9 @@ class ListOfNotes extends Component {
   }
 
   render () {
-    console.log('list', this.props.notes)
     return (
       <div>
-        {this.props.notes.title}
+        {this.props.notes.length > 0 ? this.props.notes[0].noteText : ''}
       </div>
     )
   }

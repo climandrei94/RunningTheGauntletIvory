@@ -8,7 +8,11 @@ function * doLogin (userInfo) {
 
 function * createNoteSaga (noteInfo) {
   console.log('create', noteInfo)
-  yield put(putNotesToState(noteInfo.payload))
+  let notes = {
+    ...noteInfo.payload,
+    id: 1
+  }
+  yield put(putNotesToState(notes))
 }
 
 function * saga () {

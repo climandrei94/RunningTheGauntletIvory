@@ -16,7 +16,7 @@ const reducer = (state = initState, action) => {
     case Constants.PUT_NOTES_TO_STATE:
       return {
         ...state,
-        notes: [...action.payload, ...state.notes]
+        notes: [action.payload]
       }
     default:
       return state
