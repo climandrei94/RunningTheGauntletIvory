@@ -1,7 +1,8 @@
 import Constants from '../constants/constants'
 
 const initState = {
-  isLogedIn: false
+  isLogedIn: false,
+  notes: []
 }
 
 const reducer = (state = initState, action) => {
@@ -11,6 +12,11 @@ const reducer = (state = initState, action) => {
         ...state,
         isLogedIn: true,
         email: action.payload
+      }
+    case Constants.PUT_NOTES_TO_STATE:
+      return {
+        ...state,
+        notes: [...action.payload, ...state.notes]
       }
     default:
       return state
