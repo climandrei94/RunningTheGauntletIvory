@@ -16,15 +16,12 @@ const insertNewNoteToDb = noteDetails => {
   })
 }
 
-const sendResponse = (response, user) => {
-  response.status(200).send(user)
+const sendResponse = (response, note) => {
+  response.status(200).send(note)
 }
 
 const treatError = (response, err) => {
   switch (err.code) {
-    case 11000:
-      response.status(409).send('User already exist')
-      break
     default:
       response.status(500).send('Error on database insert')
   }

@@ -7,7 +7,6 @@ const getNotes = (request, response) => {
 }
 
 const getNotesFromDB = (userEmail) => {
-  console.log(userEmail)
   return new Promise((resolve, reject) => {
     NotesSchema.find({email: userEmail}, (error, data) => {
       if (error) reject(error)
@@ -16,13 +15,13 @@ const getNotesFromDB = (userEmail) => {
   })
 }
 
-const sendResponse = (response, users) => {
-  response.status(200).send(users)
+const sendResponse = (response, notes) => {
+  response.status(200).send(notes)
 }
 
 const handleError = (response, err) => {
   console.log('(getNotes)ERROR->', err)
-  response.status(500).send('Error on get users')
+  response.status(500).send('Error on get notes')
 }
 
 module.exports = getNotes

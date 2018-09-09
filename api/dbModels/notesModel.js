@@ -4,8 +4,7 @@ const Schema = mongoose.Schema
 let notesSchema = new Schema({
   email: {
     type: String,
-    required: true,
-    unique: [true, 'This email exists already']
+    required: true
   },
   title: {
     type: String,
