@@ -1,8 +1,13 @@
-import { all, takeLatest, put } from 'redux-saga/effects'
+import { all, takeLatest, put, call } from 'redux-saga/effects'
 import Constants from '../constants/constants'
 import {loginWithSucces, putNotesToState} from '../actions/userActions'
+import { login } from '../networking/networking'
 
 function * doLogin (userInfo) {
+  console.log('saga', userInfo)
+  let {email, pswd} = userInfo.payload
+  let responseFromServer = yield call(login, email, pswd)
+  console.log(responseFromServer)
   yield put(loginWithSucces(userInfo.payload.email))
 }
 
