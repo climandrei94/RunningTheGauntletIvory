@@ -1,22 +1,22 @@
 const UserSchema = require('../dbModels/userModel')
 
 const getUsers = (request, response) => {
-  getUsersFromDB()
+  getUsersFromDB(request.params.email)
     .then(sendResponse.bind(null, response))
-    .then(handleError.bind(null, response))
+    .catch(handleError.bind(null, response))
 }
 
-const getUsersFromDB = () => {
+const getUsersFromDB = (userData) => {
   return new Promise((resolve, reject) => {
-    UserSchema.find((error, data) => {
+    UserSchema.find({email: userData, password: '12345678'}, (error, data) => {
       if (error) reject(error)
-      resolve(data)
+      resolve(data.length)
     })
   })
 }
 
 const sendResponse = (response, users) => {
-  response.status(200).send(users)
+  response.status(200).send(users.toString())
 }
 
 const handleError = (response, err) => {

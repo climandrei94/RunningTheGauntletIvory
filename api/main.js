@@ -6,7 +6,7 @@ let notesRoutes = require('./routes/notesRoutes')
 let logErrors = require('./errorHandlers/logErrors')
 let errorHandler = require('./errorHandlers/errorHandler')
 
-const mongooseURL = 'mongodb://localhost:27017/myApplication'
+const mongooseURL = 'mongodb://localhost:27017/ivoryDB'
 const errorMessages = {
   errorConnectingToDB: {err: `Can't connect to database`}
 }
